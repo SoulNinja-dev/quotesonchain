@@ -87,7 +87,10 @@ export default function Home() {
 
   if (!connectedAccount) {
     return (
-      <button onClick={connectAccount}>
+      <button
+        onClick={connectAccount}
+        className="m-10 p-2 bg-gray-700 text-white text-xl rounded-lg"
+      >
         connect browser wallet on goerli network
       </button>
     );
