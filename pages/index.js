@@ -10,7 +10,7 @@ export default function Home() {
   const [quotes, setQuotes] = useState([]);
   const [newQuote, setNewQuote] = useState("");
 
-  const contractAddress = "0x100BD712a12c38307f383b409d9C17303D142Ee1";
+  const contractAddress = "0xd7197d8382fe08b8B89Cfa6EFC2e2fc771944cAD";
   const contractABI = abi.abi;
 
   const handleAccounts = async (accounts) => {
