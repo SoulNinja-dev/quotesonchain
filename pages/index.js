@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Card from "../components/Card";
 import abi from "../utils/Quotes.json";
-import {
-  Heading,
-  Text,
-  Input,
-  Button,
-  List,
-  ListItem,
-  UnorderedList,
-} from "@chakra-ui/react";
+import { Heading, Text, Input, Button } from "@chakra-ui/react";
 
 export default function Home() {
   const [ethereum, setEthereum] = useState(undefined);
@@ -72,8 +64,10 @@ export default function Home() {
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
     const quoteTx = await contract.addQuote(newQuote);
-    quoteTx.wait();
+    await quoteTx.wait();
     console.log(quoteTx.hash);
+
+    setNewQuote("");
 
     await getQuotes();
   };
@@ -92,7 +86,11 @@ export default function Home() {
   }
 
   if (!connectedAccount) {
-    return <button onClick={connectAccount}>connect metamask</button>;
+    return (
+      <button onClick={connectAccount}>
+        connect browser wallet on goerli network
+      </button>
+    );
   }
 
   return (
